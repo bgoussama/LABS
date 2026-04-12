@@ -9,7 +9,10 @@ avec images circulaires, notes et filtrage dynamique.
 
 
 
-https://github.com/user-attachments/assets/686ebf22-96bb-434d-bcaa-234417a8e861
+
+https://github.com/user-attachments/assets/7d64a13c-8791-4546-9733-dbc603fb9be3
+
+
 
 
 
