@@ -6,35 +6,61 @@ import android.widget.EditText;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText surfaceInput, piecesInput;
+    private EditText nomInput, adresseInput, surfaceInput, piecesInput;
     private CheckBox piscineCheckbox;
-    private TextView resultView;
+    private TextView resultBase, resultSupplementaire, resultTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        surfaceInput    = findViewById(R.id.input_surface);
-        piecesInput     = findViewById(R.id.input_pieces);
+        // Liaison XML <-> Java
+        nomInput = findViewById(R.id.input_nom);
+        adresseInput = findViewById(R.id.input_adresse);
+        surfaceInput = findViewById(R.id.input_surface);
+        piecesInput = findViewById(R.id.input_pieces);
         piscineCheckbox = findViewById(R.id.checkbox_piscine);
-        resultView      = findViewById(R.id.result);
+        
+        resultBase = findViewById(R.id.result_base);
+        resultSupplementaire = findViewById(R.id.result_supplementaire);
+        resultTotal = findViewById(R.id.result_total);
 
+        // Écouteur du bouton "Calculer"
         findViewById(R.id.button_calcul).setOnClickListener(v -> calculer());
     }
 
     private void calculer() {
-        double surface  = Double.parseDouble(surfaceInput.getText().toString());
-        int pieces      = Integer.parseInt(piecesInput.getText().toString());
-        boolean piscine = piscineCheckbox.isChecked();
+        try {
+            // Lecture des valeurs saisies
+            String surfaceStr = surfaceInput.getText().toString();
+            String piecesStr = piecesInput.getText().toString();
 
-        double impotBase  = surface * 2;
-        double supplement = pieces * 50 + (piscine ? 100 : 0);
-        double total      = impotBase + supplement;
+            if (surfaceStr.isEmpty() || piecesStr.isEmpty()) {
+                Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-        resultView.setText("Impôt total : " + total + " DH");
+            double surface = Double.parseDouble(surfaceStr);
+            int pieces = Integer.parseInt(piecesStr);
+            boolean piscine = piscineCheckbox.isChecked();
+
+            // Calcul des impôts
+            double impotBase = surface * 2;
+            double supplement = (pieces * 50) + (piscine ? 100 : 0);
+            double total = impotBase + supplement;
+
+            // Affichage des résultats
+            resultBase.setText("Impôt de base : " + impotBase);
+            resultSupplementaire.setText("impôt supplémentaire : " + supplement);
+            resultTotal.setText("impôt Total : " + total);
+
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Erreur de saisie", Toast.LENGTH_SHORT).show();
+        }
     }
 }
