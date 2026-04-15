@@ -1,42 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center">
+    android:background="#FFFFFF">
 
-    <EditText
-        android:id="@+id/input_surface"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Surface (m²)"
-        android:inputType="number" />
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <EditText
-        android:id="@+id/input_pieces"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre de pièces"
-        android:inputType="number" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Calcul des impôts locaux"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:layout_marginBottom="20dp" />
 
-    <CheckBox
-        android:id="@+id/checkbox_piscine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Piscine" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/input_nom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="10dp" />
 
-    <Button
-        android:id="@+id/button_calcul"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calculer" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adresse"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/input_adresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="10dp" />
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Surface"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/input_surface"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="10dp" />
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre de pièces"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/input_pieces"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="30dp">
+
+            <CheckBox
+                android:id="@+id/checkbox_piscine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Piscine"
+                android:textSize="18sp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/button_calcul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calcul"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/result_base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#333333" />
+
+        <TextView
+            android:id="@+id/result_supplementaire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#333333" />
+
+        <TextView
+            android:id="@+id/result_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#333333" />
+
+    </LinearLayout>
+</ScrollView>
